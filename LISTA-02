@@ -1,1 +1,153 @@
+algoritmo Consumo_Energia;
+// Síntese: Calculo de gasto de enrgia
+//  Objetivo: Calcular quanto se consome de energia
+//  Entrada : Um valor postivo de energia em KW
+//  Saída   : Mostra o valor que o usuário tem q pagar
 
+
+principal
+	// Declarações
+	inteiro kw;
+	real preco;
+	
+	// Instruções
+	//1) Leia os valores
+	escreva("Digite o consumo (KW): ");
+	leia(kw);
+	//2) Faça o cálculo
+	se(kw<=50)entao
+		preco = kw*0.1918;
+	senao 
+		se(kw>=51 e kw<=100)entao
+			preco = kw*0.3877;
+		senao
+			se(kw>=101 e kw<=200)entao
+				preco = kw*0.5566;
+			senao
+				se(kw>200)entao
+					preco = kw*0.7834;
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+
+	
+	//3) Mostre o resultado
+	escreval("VALOR = ", preco::2);
+
+fimPrincipal
+
+algoritmo Ordem_crescente;
+// Síntese: Ordenar números em crescentes.
+//  Objetivo: Ordenar números em crescente 
+//  Entrada : Ler 3 núemros digitados pelo usuário
+//  Saída   : Mostrar para o usuário 3 números em ordem crescente
+
+
+principal
+	// Declarações
+	inteiro n1;
+	inteiro n2;
+	inteiro n3;
+	inteiro maior;
+	inteiro meio;
+	inteiro menor;
+	maior = 0;
+	menor = 0;
+	meio = 0;
+	
+	// Instruções
+	//1)) Ler as informações do usuário
+	escreva("número 1: ");
+	leia(n1);
+	escreva("número 2: ");
+	leia(n2);
+	escreva("número 3: ");
+	leia(n3);
+
+	//2) Fazer o cálculo da ordem
+	
+	se(n1 > n2 e n1 > n3)entao
+		maior = n1;
+		se(n2 > n3)entao
+			meio = n2;
+			menor = n3;
+		senao
+			meio = n3;
+			menor = n2;
+		fimSe
+	fimSe
+	se(n2 > n1 e n2 > n3)entao
+		maior = n2;
+		se(n1 > n3)entao
+			meio = n1;
+			menor = n3;
+		senao
+			meio = n3;
+			menor = n1;
+		fimSe
+	fimSe
+	se(n3 > n1 e n3 > n2)entao
+		maior = n3;
+		se(n1 > n2)entao
+			meio = n1;
+			menor = n2;
+		senao
+			meio = n2;
+			menor = n1;
+		fimSe
+	fimSe
+	se(n1 == n2 e n1 == n3 e n2 == n3)entao
+		maior = n1;
+		meio = n2;
+		menor = n3;
+	fimSe
+	//3) Mostrar ao usuário o resultado final
+	escreval(menor + " " + meio + " " + maior);
+
+ 
+fimPrincipal
+
+algoritmo assinatura_streaming;
+// Síntese
+//  Objetivo: Calcular o valor final da assinatura
+//  Entrada : número de telas e qualidade
+//  Saída   : preço ou ASSINATURA INDISPONIVEL!
+
+
+principal
+	// Declarações
+
+	inteiro telas;
+	real valor;
+	caracter qualidade;
+
+	// Instruções
+
+	leia(telas);
+	leiaCaracter(qualidade);
+
+	se(telas <= 0)entao
+		escreval("ASSINATURA INDISPONIVEL!");
+	senao
+		se(qualidade!='n' e qualidade!='N' e qualidade!='S' e qualidade!='s')entao
+			escreval("ASSINATURA INDISPONIVEL!");
+		senao
+			se(telas > 0 e telas <= 2)entao
+				valor = telas * 15.99;
+			senao
+				se(telas > 2 e telas <= 4)entao
+					valor = telas * 10.99;
+				senao
+					se(telas>=5)entao
+						valor = telas * 8.99;
+					fimSe
+				fimSe
+			fimSe	
+			se(qualidade=='S' ou qualidade=='s')entao
+				valor = valor * 1.17;
+			fimSe
+			escreval("ASSINATURA = R$ ", valor::2);
+		fimSe
+	fimSe	
+fimPrincipal
