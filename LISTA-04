@@ -1,1 +1,248 @@
+algoritmo Somatorio;
+// Síntese
+//  Objetivo: Calcular o somatório da função 
+//  Entrada : Número inteiro
+//  Saída   : Valos do somatório de N
 
+
+principal
+	// Declarações
+	inteiro n;
+	
+	// Instruções
+	leia(n);
+	se(n > 0)entao
+		escreval("SOMA = ", somatorio(n)::2);
+	senao
+		escreval("VALOR DE N INCORRETO");
+	fimSe
+fimPrincipal
+
+funcao real somatorio(inteiro n)
+	inteiro i;
+	real s, funsao;
+	
+	s = 0;
+	para(i de 1 ate n passo 1)faca
+		funsao = (exp(i, 2) + 1) / (i + 3); 
+		s = (funsao + s);
+	fimPara
+	retorna s;
+	
+fimFuncao
+
+algoritmo Fatorial;
+// Síntese
+//  Objetivo: Calcular o Fatorial da função
+//  Entrada : Valor x e valor y
+//  Saída   : CÁLCULO DO FATORIAL
+
+
+principal
+	// Declarações
+	inteiro x;
+	inteiro y;
+	real conta;
+	
+	// Instruções
+	leia(x);
+	leia(y);
+	se(x < 0)entao
+		escreval("VALOR DE X INCORRETO");
+	fimSe
+	se(y < 0)entao
+		escreval("VALOR DE Y INCORRETO");
+	senao
+		se(x >= 0 e y >= 0)entao
+			conta = fatorial(x + y) / raizQuadrada(fatorial(x) + fatorial(y));
+			escreval("RESULTADO = ", conta::3);
+		fimSe
+	fimSe
+fimPrincipal
+
+funcao real fatorial(inteiro n)
+	inteiro i;
+	real fat;
+	fat = 1;
+	para(i de 2 ate n passo 1)faca
+		fat = fat * i;
+	fimPara
+	retorna fat;
+fimFuncao
+
+algoritmo Soma_Divisores;
+// Síntese
+//  Objetivo: Calcular a soma dos divisores e a multiplicação dos divisores
+//  Entrada : Um nuúmero inteiro 
+//  Saída   :Soma dos divisores e produto dos divisores
+
+
+principal
+	// Declarações
+	inteiro n;
+
+	// Instruções
+	leia(n);
+	se(n <= 0)entao
+		escreval("VALOR DE ENTRADA INCORRETO");
+	senao
+		escreval("SOMA DOS DIVISORES = ", soma_divisores(n));
+		escreval("PRODUTO DOS DIVISORES = ", multiplicacao_divisores(n));
+	fimSe
+fimPrincipal
+
+funcao inteiro soma_divisores(inteiro n)
+	inteiro i;
+	inteiro divisor;
+	inteiro somadi;
+
+	somadi = 0;
+	
+	para(i de 1 ate n passo 1)faca
+		se(n % i == 0)entao
+			divisor = i;
+			somadi = somadi + divisor;
+		fimSe	
+	fimPara
+
+	retorna somadi;
+
+fimFuncao
+
+funcao inteiro multiplicacao_divisores(inteiro n)
+	inteiro i;
+	inteiro divisor;
+	inteiro multidi;
+
+	multidi = 1;
+	
+	para(i de 1 ate n passo 1)faca
+		se(n % i == 0)entao
+			divisor = i;
+			multidi = multidi * divisor;
+		fimSe	
+	fimPara
+
+	retorna multidi;
+
+fimFuncao
+
+algoritmo fibonacci;
+// Síntese
+//  Objetivo:  fazer o calculo do numero num
+//  Entrada : num
+//  Saída   : fibonacci ate num
+
+
+principal
+    // Declarações
+    inteiro n;
+    // Instruções
+    leia(n);
+    se(n > 0)entao
+           fibonacci(n);
+       senao
+           escreval("VALOR DE N INCORRETO");
+       fimSe
+fimPrincipal
+
+procedimento fibonacci(inteiro num)
+    real termo_1, termo_2, termo_3, i;
+
+    termo_1 = 1;
+    termo_2 = 1;
+
+    para(i de 1 ate num passo 1)faca
+        termo_3 = termo_1 + termo_2;
+        termo_1 = termo_2;
+        termo_2 = termo_3;
+        se(i != num)entao
+        	escreva((termo_3 - termo_1)::0, " ");
+        senao
+        	escreva((termo_3 - termo_1)::0);
+        fimSe
+    fimPara
+    escreval("");
+fimProcedimento
+
+algoritmo validadorData;
+// Síntese
+//  Objetivo: Verificar se a data é válida
+//  Entrada : Inteiro, dia, mês, ano, hora e minuto
+//  Saída   : Se a data é válida ou inválida
+
+
+principal
+	// Declarações
+
+	inteiro dia, mes, ano, hora, minuto;
+
+	// Instruções
+	leia(dia);
+	leia(mes);
+	leia(ano);
+	leia(hora);
+	leia(minuto);
+	se(valida_data(dia, mes, ano, hora, minuto) == verdadeiro)entao
+		escreval("DATA CORRETA");
+	senao
+		escreval("DATA INCORRETA");
+	fimSe
+
+fimPrincipal
+
+funcao logico valida_data(inteiro dia, inteiro mes, inteiro ano, inteiro hora, inteiro minuto)
+	se(minuto >= 00 e minuto <= 59)entao
+		se(hora >= 00 e hora <= 23)entao
+			se(((ano % 4 == 0 e ano % 100 != 0) ou ano % 400 == 0) e ano > 0000)entao
+				se(mes == 2)entao
+					se(dia > 0 e dia <= 29)entao
+						retorna verdadeiro;
+					senao
+						retorna falso;
+					fimSe
+				fimSe
+			fimSe
+
+			se(ano >= 0000)entao
+				se(mes <= 12 e mes > 0)entao
+					se(mes == 1 ou mes == 3 ou mes == 5 ou mes == 7 ou mes == 8 ou mes == 10 ou mes == 12)entao
+						se(dia > 0 e dia <= 31)entao
+							retorna verdadeiro;
+						senao
+							retorna falso;
+						fimSe
+					senao
+						se(mes == 4 ou mes == 6 ou mes == 9 ou mes == 11)entao
+							se(dia > 0 e dia <= 30)entao
+								retorna verdadeiro;
+							senao
+								retorna falso;
+							fimSe
+						senao
+							se(mes == 2)entao
+								se(dia > 0 e dia <= 28)entao
+									retorna verdadeiro;
+								senao
+									retorna falso;
+								fimSe
+							fimSe
+						fimSe
+					fimSe
+				senao
+					retorna falso;
+				fimSe
+			senao
+				retorna falso;
+			fimSe
+		senao
+			retorna falso;
+		fimSe
+	senao
+		retorna falso;
+	fimSe
+
+
+	//retorna falso;
+
+fimFuncao
