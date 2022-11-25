@@ -34,3 +34,67 @@ principal
 	escreval("Valor gasto: R$", com_gasto::1);
 	
 fimPrincipal
+
+algoritmo Distancia_Pontos;
+// Síntese: Calculas distância entre dois pontos e mostra-lo na tela
+//  Objetivo:  Calculas distância entre dois pontos.
+//  Entrada : Valores de x1, y1, x2, y2 respectivamente.
+//  Saída   : Mostrar a distância dessas coordenadas para o usuário
+
+
+principal
+	// Declarações
+	real x1;
+	real y1;
+	real x2; 
+	real y2;
+	real distancia;
+
+	// Instruções
+	//1) Ler as coordenadas;
+	escreva("Digite o X1: ");
+	leia(x1);
+	escreva("Digite o Y1: ");
+	leia(y1);
+	escreva("Digite o X2: ");
+	leia(x2);
+	escreva("Digite o Y2: ");
+	leia(y2);
+	
+	//2) Calcular a distância entre os pontos.
+	distancia = raizQuadrada(((x2 - x1)*(x2 - x1)) + ((y2 - y1)*(y2 - y1)));
+	
+	//3) Mostrar os resultado para o usuário.
+	escreval("DISTANCIA = ", distancia::2);
+
+fimPrincipal
+
+algoritmo TempodeClassificacao;
+// Síntese: Calcular tempo de volta de um piloto.
+//  Objetivo: Calcular tempo de volta de um piloto mais puniçoes sofridas.
+//  Entrada : Tempo, vezes que saiu da pista, vezes que trocou de pneus.
+//  Saída   : Tempo final em Milissegundos para o usuário.
+
+
+principal
+    // Declarações
+    real time_lap;
+    inteiro out;
+    inteiro tire;
+    real end_lap;
+    real juros;
+
+    // Instruções
+    //1) Ler as informações sobre a volta do piloto.
+    leia(time_lap);
+    leia(out);
+    leia(tire);
+
+    //2) Calcular o tempo final da volta.
+    juros = exp(1.03, tire);
+    end_lap = (time_lap + (out * 500)) * juros;
+
+    //3) Mostre o tempo final para o usuário.
+    escreval("TEMPO FINAL = ", end_lap::2, " ms");
+
+fimPrincipal
