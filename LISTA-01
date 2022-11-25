@@ -1,1 +1,36 @@
+algoritmo Gasolina;
+// Síntese: 
+//  Objetivo: Cálculo de gasto de combustível .
+//  Entrada : Consumo do veículo, velocidade média do veículo, duração da viagem e preço do combustivel.
+//  Saída   : Distância percorrida e valor gasto na viagem.
 
+
+principal
+	// Declarações
+	real consumo_medio;
+	real media;
+	inteiro tempo;
+	real preco;
+	real distancia;
+	real com_gasto;
+
+	// Instruções
+	//1) Ler as informações.
+	escreva("Qual o consumo médio do veículo (km/l)? ");
+	leia(consumo_medio);
+	escreva("Qual a velocidade média no trajeto (em km/h)? ");
+	leia(media);
+	escreva("Quanto tempo durou a viagem (em horas)? ");
+	leia(tempo);
+	escreva("Qual o valor por litro do combustível: R$");
+	leia(preco);
+	
+	//2) Calcular distância e valor gasto.
+	distancia = media * tempo;
+	com_gasto = (distancia / consumo_medio) * preco;
+	
+	//3) Mostrar para o usuario.
+	escreval("Distancia percorrida (KM): ", distancia) ;
+	escreval("Valor gasto: R$", com_gasto::1);
+	
+fimPrincipal
