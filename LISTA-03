@@ -1,1 +1,246 @@
+algoritmo PRIMOS;
+// Síntese : Descobrir números primos
+//  Objetivo: Encontrar os primos
+//  Entrada :numeros desejados
+//  Saída   : quantidade de numeros primos e numeros digitados
 
+
+principal
+	// Declarações
+	inteiro n;
+	inteiro pr;
+	inteiro cont;
+	inteiro div;
+	inteiro i;
+
+	cont = 0;
+	pr = 0;
+	div = 0;
+	
+	// Instruções
+	faca
+		leia(n);
+		cont = cont + 1;
+		para(i de 1 ate n passo 1)faca
+			se(n % i == 0)entao
+				div = div + 1;
+			fimSe
+		fimPara
+			se(div == 2)entao
+				pr = pr + 1;
+			fimSe
+			div = 0;
+	enquanto(n > 1);
+	cont = cont - 1;
+	escreval("NUMEROS DIGITADOS = ", cont);
+	escreval("NUMEROS PRIMOS = ", pr);
+	
+fimPrincipal
+
+algoritmo Futebol;
+// Síntese: Informações dos jogadores e filtro de cada uma delas.
+//  Objetivo:Idade,peso, altura de cada jogador e mostra > 18 anos, média dos pesos e % de < 1,70m
+//  Entrada :Idade, peso e altura
+//  Saída   :Maiores de 18 anos, média do peso e porcentagem de menos de 1,70 metros.
+
+
+principal
+	// Declarações
+	inteiro age;
+	real peso;
+	real altura;
+	inteiro i; //Contador do PARA
+	inteiro m18; //Menor de 18 anos
+	real speso; //Soma dos pesos
+	real mpeso; // Média do peso
+	real cont17; //Contador de menores de 1.7 metros de altura
+	real por17; // Porcentagem de menores de 1.7 de alutra
+
+	m18 = 0;
+	speso = 0;
+	cont17 = 0;
+	
+	// Instruções
+	para(i de 1 ate 11 passo 1)faca
+	leia(age);
+	leia(peso);
+	leia(altura);
+		se(age < 18)entao
+			m18 = m18 + 1;
+		fimSe
+		speso = peso + speso;
+		mpeso = speso / 11;
+		se(altura < 1.70)entao
+			cont17 = cont17 + 1;
+		fimSe
+		por17 = (cont17 * 100) / 11;
+	fimPara
+	
+	escreval("JOGADORES COM MENOS DE 18 ANOS = ", m18);
+	escreval("PESO MEDIO DOS JOGADORES = ", mpeso::2);
+	escreval("PERCENTUAL COM MENOS DE 1.70m = ", por17::2);
+
+fimPrincipal
+
+algoritmo Comissao;
+// Síntese: Calcular a comissão de vendedores
+//  Objetivo: Calcular comissão de vendedores, e mostrar na tela
+//  Entrada : Quantidade de vendedores, codigo do vendedor e a comissão
+//  Saída   : Maior e menor comissão
+
+
+principal
+	// Declarações
+	inteiro N; //Quantidade de vendedores
+	inteiro cod; //Código do vendedor
+	real comissao; //Comissão do vendedor
+	inteiro i; //Contador do para
+	real maior; //Maior comissão
+	real menor; //Menor comissão
+	inteiro codma, codme; //Codigo da maior e menor comissão
+
+	maior = 0;
+	menor = 1000000;
+	
+	// Instruções
+	leia(N);
+	para(i de 1 ate N passo 1)faca
+		leia(cod);
+		leia(comissao);
+		se(comissao > maior)entao
+			maior = comissao;
+			codma = cod;
+		fimSe
+		se(comissao < menor)entao
+			menor = comissao;
+			codme = cod;
+		fimSe
+	fimPara
+	escreval("VENDEDOR COM MAIOR COMISSAO = ", codma);
+	escreval("VENDEDOR COM MENOR COMISSAO = ", codme);
+	
+fimPrincipal
+
+algoritmo Conteudo_Texto;
+// Síntese: 
+//  Objetivo:Calcular tamanho, maisuculas e minusculas  
+//  Entrada : texto
+//  Saída   : maiusculas, minusculas, simbolos, caracteres e numeros.
+
+
+principal
+	// Declarações
+	texto frase;
+	inteiro len;
+	inteiro cont_mai;
+	inteiro cont_men;
+	inteiro cont_num;
+	inteiro cont_sim;
+	inteiro i, o, p, n, s;
+
+	cont_mai = 0;
+	cont_men = 0;
+	cont_num = 0;
+	cont_sim = 0;
+	
+	// Instruções
+	leia(frase);
+	len = tamanhoTexto(frase); // Quantidade de caracter do Texto
+	para(i de 0 ate (len - 1) passo 1)faca
+		para(o de 65 ate 90 passo 1)faca
+			se(caracterTexto(frase, i) == asciiCaracter(o))entao
+				cont_mai = cont_mai + 1;
+			fimSe
+		fimPara
+		
+		para(p de 97 ate 122 passo 1)faca
+			se(caracterTexto(frase, i) == asciiCaracter(p))entao
+				cont_men = cont_men + 1;
+			fimSe
+		fimPara
+
+		para(n de 48 ate 57 passo 1)faca
+			se(caracterTexto(frase, i) == asciiCaracter(n))entao
+				cont_num = cont_num + 1;
+			fimSe
+		fimPara
+		
+		para(s de 58 ate 64 passo 1)faca
+			se(caracterTexto(frase, i) == asciiCaracter(s))entao
+				cont_sim = cont_sim + 1;
+			fimSe
+		fimPara 
+
+		para(s de 32 ate 47 passo 1)faca
+			se(caracterTexto(frase, i) == asciiCaracter(s))entao
+				cont_sim = cont_sim + 1;
+			fimSe
+		fimPara
+
+		para(s de 91 ate 96 passo 1)faca
+			se(caracterTexto(frase, i) == asciiCaracter(s))entao
+				cont_sim = cont_sim + 1;
+			fimSe
+		fimPara
+
+		para(s de 123 ate 127 passo 1)faca
+			se(caracterTexto(frase, i) == asciiCaracter(s))entao
+				cont_sim = cont_sim + 1;
+			fimSe
+		fimPara
+		
+	fimPara
+
+	escreval("QUANTIDADE DE CARACTERES = ", len);
+	escreval("QUANTIDADE DE MAIUSCULAS = ", cont_mai);
+	escreval("QUANTIDADE DE MINUSCULAS = ", cont_men);
+	escreval("QUANTIDADE DE NUMEROS = ", cont_num);
+	escreval("QUANTIDADE DE SIMBOLOS = ", cont_sim);
+
+fimPrincipal
+
+algoritmo Restaurante;
+// Síntese: Calcular a conta
+//  Objetivo: Calcular a conta de um restaurante
+//  Entrada : Homem, Mulher e bebidas + 10%
+//  Saída   : Preco calculado total
+
+
+principal
+    // Declarações
+    inteiro i;
+    inteiro n_de_amigos;
+    inteiro cont_h; // numero de homens
+    inteiro cont_m; // numero de mulheres
+    inteiro cont_b; // numero de bebidas
+    caracter h_ou_m; // homem ou mulher
+    inteiro n_bebidas;
+    inteiro valor_bebidas;
+    real valor;
+    
+
+    cont_h = 0;
+    cont_m = 0;
+    cont_b = 0;
+	valor_bebidas = 0;
+    // Instruções
+
+    leia(n_de_amigos);
+    para(i de 1 ate n_de_amigos passo 1)faca
+        leiaCaracter(h_ou_m);
+        leia(n_bebidas);
+        se(h_ou_m == 'h' ou h_ou_m == 'H')entao
+            cont_h = cont_h + 1;
+        senao
+            se(h_ou_m == 'm' ou h_ou_m == 'M')entao
+                cont_m = cont_m + 1;
+            fimSe
+        fimSe
+    	se(n_bebidas > 0)entao
+			valor_bebidas = n_bebidas + valor_bebidas;
+		fimSe
+        valor = ((cont_h * 39.90) + (cont_m * 34.90) + (valor_bebidas * 4.50)) * 1.1;
+	fimPara
+    escreval("VALOR TOTAL = R$ ", valor::2);
+
+fimPrincipal
