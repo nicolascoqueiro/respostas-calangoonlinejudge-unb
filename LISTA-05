@@ -1,1 +1,314 @@
+algoritmo RESISTENCIA;
+// Síntese
+//  Objetivo: Calcular a resistencia de N valores 
+//  Entrada : N valores
+//  Saída   : Resistencia em serie e resistencia em paralelo
 
+
+principal
+	// Declarações
+	real n;
+	inteiro i;
+	real vetor[8];
+	
+	// Instruções
+	para(i de 0 ate 7 passo 1)faca // GAMBIARRA LEVEL 1.000.000 == DEU CERTO!!!
+		vetor[i] = 0;
+	fimPara
+	para(i de 0 ate 7 passo 1)faca
+		leia(n);
+		se(n > 0)entao
+			vetor[i] = n;
+		senao
+			interrompa;
+		fimSe
+	fimPara
+
+	escreval("VALOR EM SERIE = ", resistencia_serie(vetor)::2);
+	escreval("VALOR EM PARALELO = ", resistencia_paralelo(vetor)::4);
+
+fimPrincipal
+
+funcao real resistencia_serie(real num[])
+	
+	real cont, i;
+	
+	cont = 0;
+
+	
+	para(i de 0 ate 7 passo 1)faca
+		se(num[i] > 0)entao
+		cont = num[i] + cont;
+		fimSe
+		
+	fimPara
+	
+	retorna cont;
+fimFuncao
+funcao real resistencia_paralelo(real num[])
+	real cont, soma, i;
+
+	soma = 0;
+	cont = 0;
+
+	para(i de 0 ate 7 passo 1)faca
+		se(num[i] > 0)entao
+			soma = (1 / num[i] + soma);
+		fimSe
+		cont = 1 / soma;
+		
+	fimPara
+
+	retorna cont;
+
+fimFuncao
+
+algoritmo sequenciadecaracteres;
+// Síntese
+//  Objetivo: Faça um algoritmo que preencha duas sequências de caracteres com N posições cada e mostre na tela uma mensagem informando se as sequências são iguais ou diferentes.
+//  Entrada : N valores
+//  Saída   : Igual ou desigual
+
+
+principal
+	// Declarações
+	caracter n;
+	caracter vetor[6];
+	caracter vetorcompara[6];
+	inteiro c, num;
+	
+	// Instruções
+	leia(num);
+	para(c de 0 ate num - 1 passo 1)faca
+		leiaCaracter(n);
+		vetor[c] = n;
+	fimPara
+	para(c de 0 ate num - 1 passo 1)faca
+		leiaCaracter(n);
+		vetorcompara[c] = n;
+	fimPara
+
+	se(compara_sequencias(num, vetor, vetorcompara) == 1)entao
+		escreval("As sequencias sao iguais!");
+	senao
+		se(compara_sequencias(num, vetor, vetorcompara) == 0)entao
+			escreval("As sequencias sao diferentes!");
+		fimSe
+	fimSe
+fimPrincipal
+
+funcao inteiro compara_sequencias(inteiro num, caracter n[], caracter n2[])
+	
+	inteiro c, v;
+	
+	para(c de 0 ate num - 1 passo 1)faca
+		se(n[c] == n2[c])entao
+			v = 1;
+		senao
+			v = 0;
+		fimSe
+	fimPara
+
+	se(v == 1)entao
+		retorna 1;
+	senao
+		retorna 0;
+	fimSe
+	
+fimFuncao
+
+algoritmo idadePesos;
+// Síntese
+//  Objetivo: Armazenar idade e pesos  
+//  Entrada : N valores
+//  Saída   : idade e peso das pessoas
+
+
+principal
+	// Declarações
+	inteiro n, i;
+	inteiro id, true;
+	real ps, maior, menor, maiorps, menorid;
+	inteiro idade[6];
+	real peso[6];
+	
+	true = 1;
+	maior = 0;
+	menor = 1000000;
+	menorid = 0;
+	maiorps = 0;
+	
+	// Instruções
+	leia(n);
+	para(i de 0 ate n - 1 passo 1)faca
+		leia(id);
+		leia(ps);		
+		idade[i] = id;
+		peso[i] = ps;
+		
+		se(peso[i] > maior)entao 
+			maior = peso[i];
+			maiorps = idade[i];
+		fimSe
+		se(idade[i] < menor)entao
+			menor = idade[i];
+			menorid = peso[i];
+		fimSe
+		se(peso[i] <= 0 ou idade[i] <= 0)entao
+			true = 0;
+		fimSe
+	fimPara
+		
+ 	se(true == 0)entao
+ 		escreval("DADOS INCORRETOS");
+ 	senao
+ 		escreval("IDADE DA PESSOA DE MAIOR PESO = ", maiorps::0);
+ 		escreval("PESO DA PESSOA DE MENOR IDADE = ", menorid::2);
+	fimSe
+
+fimPrincipal
+
+algoritmo idadePesos;
+// Síntese
+//  Objetivo: Armazenar idade e pesos  
+//  Entrada : N valores
+//  Saída   : idade e peso das pessoas
+
+
+principal
+	// Declarações
+	inteiro n, i;
+	inteiro id, true;
+	real ps, maior, menor, maiorps, menorid;
+	inteiro idade[6];
+	real peso[6];
+	
+	true = 1;
+	maior = 0;
+	menor = 1000000;
+	menorid = 0;
+	maiorps = 0;
+	
+	// Instruções
+	leia(n);
+	para(i de 0 ate n - 1 passo 1)faca
+		leia(id);
+		leia(ps);		
+		idade[i] = id;
+		peso[i] = ps;
+		
+		se(peso[i] > maior)entao 
+			maior = peso[i];
+			maiorps = idade[i];
+		fimSe
+		se(idade[i] < menor)entao
+			menor = idade[i];
+			menorid = peso[i];
+		fimSe
+		se(peso[i] <= 0 ou idade[i] <= 0)entao
+			true = 0;
+		fimSe
+	fimPara
+		
+ 	se(true == 0)entao
+ 		escreval("DADOS INCORRETOS");
+ 	senao
+ 		escreval("IDADE DA PESSOA DE MAIOR PESO = ", maiorps::0);
+ 		escreval("PESO DA PESSOA DE MENOR IDADE = ", menorid::2);
+	fimSe
+
+fimPrincipal
+
+algoritmo selectionSort;
+// Síntese
+//  Objetivo: Ler N números e ordena-los
+//  Entrada : inteiro N, e N núemros
+//  Saída   : a sequência N em ordem crescente
+
+
+principal
+	// Declarações
+	inteiro tam, i, j, menor_item, aux, aux2;
+	inteiro num[10];
+	
+	// Instruções
+	leia(tam);
+	para(i de 0 ate (tam - 1) passo 1)faca
+		leia(num[i]);
+	fimPara
+	
+	para(i de 0 ate (tam - 1) passo 1)faca
+		menor_item = i;
+		para(j de 0 ate (tam - 1) passo 1)faca // Testa com os próximos números do vetor
+			se(num[menor_item] > num[j])entao //Se o item i for maior que o próximo item
+				menor_item = j; //Menor item é o j
+			fimSe
+			se(menor_item != i)entao //se j for diferente de i (são diferentes) troca a posição
+				aux = num[i]; 
+				aux2 = num[menor_item];
+				num[i] = aux2; 
+				num[menor_item] = aux;
+			fimSe
+		fimPara
+
+	
+	fimPara 
+
+	para(i de tam - 1 ate 0 passo -1)faca
+		escreval(num[i]);
+	fimPara
+	
+fimPrincipal
+
+algoritmo NOMEMUTANTES;
+// Síntese
+//  Objetivo: Pela nota, classificar os alunos dos melhores aos badaras!!!
+//  Entrada : Nota bizonha e nome horripilante
+//  Saída   : Top nomes horripilantes
+
+
+principal
+	// Declarações
+	real nota[6];
+	texto nome[6];
+	real i, j, aux, aux2, menor_item;
+	inteiro tam;
+	texto name;
+
+	// Instruções
+	leia(tam);
+	para(i de 0 ate tam - 1 passo 1)faca
+		leia(nome[i]);
+		leia(nota[i]);
+	fimPara
+	
+	para(i de 0 ate (tam - 1) passo 1)faca
+		menor_item = i;
+	para(j de 0 ate (tam - 1) passo 1)faca // Testa com os próximos números do vetor
+		se(nota[menor_item] > nota[j])entao //Se o item i for maior que o próximo item
+			menor_item = j; //Menor item é o j
+		fimSe
+		se(menor_item != i)entao //se j for diferente de i (são diferentes) troca a posição
+			aux = nota[i]; 
+			aux2 = nota[menor_item];
+			name = nome[i];
+			nota[i] = aux2; 
+			nota[menor_item] = aux;
+			nome[i] = nome[menor_item];
+			nome[menor_item] = name;
+		fimSe
+	fimPara
+
+	fimPara 
+	
+	para(i de 0 ate tam - 1 passo 1)faca
+		escreval((i + 1)::0, " - ", nome[i]);
+	fimPara
+
+
+fimPrincipal
+
+
+
+
+	
